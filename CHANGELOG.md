@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- the panel now uses Drawdy's own colours and font and matches the other icon pickers: chips that scroll with a fade, size and style controls that show the selected option in grey instead of lime, and a search box with a glyph
+- a shorter search hint that is no longer cut off
+
 ## 1.0.3
 
 - a short GIF on the listing page that shows searching for logos and dragging them onto the board in action
