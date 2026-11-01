@@ -1,4 +1,4 @@
-import { AZURE_ICONS } from "./azure-icons";
+import { AZURE_ICONS } from "./azure-icons.ts";
 
 export type Category = {
     id: string;
