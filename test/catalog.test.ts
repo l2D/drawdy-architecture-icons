@@ -85,5 +85,6 @@ test("gcp labels use Google's product names", () => {
     );
     assert.equal(titleFor("speech-to-text"), "Speech-to-Text");
     assert.equal(titleFor("text-to-speech"), "Text-to-Speech");
-    assert.equal(titleFor("trace"), "Cloud Trace");
+    assert.equal(titleFor("trace"), "Trace");
+    assert.equal(titleFor("identity-aware-proxy"), "Identity-Aware Proxy");
 });

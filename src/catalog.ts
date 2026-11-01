@@ -677,7 +677,7 @@ export function titleFor(name: string): string {
         "identity-and-access-management": "Identity and Access Management",
         "speech-to-text": "Speech-to-Text",
         "text-to-speech": "Text-to-Speech",
-        trace: "Cloud Trace",
+        "identity-aware-proxy": "Identity-Aware Proxy",
     };
     const own = Object.prototype.hasOwnProperty;
     const base = name.endsWith("-icon") ? name.slice(0, -5) : name;
