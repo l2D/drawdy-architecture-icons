@@ -98,3 +98,51 @@ test("azure category follows gcp and lists every generated icon", () => {
     assert.equal(CATEGORIES[azure].source, "azure");
     assert.deepEqual(CATEGORIES[azure].names, Object.keys(AZURE_ICONS));
 });
+
+test("kubernetes category lists all 38 icons after azure", () => {
+    const azure = CATEGORIES.findIndex((group) => group.id === "azure");
+    const k8s = CATEGORIES.findIndex((group) => group.id === "kubernetes");
+    assert.notEqual(k8s, -1, "no kubernetes category");
+    assert.equal(k8s, azure + 1);
+    assert.equal(CATEGORIES[k8s].title, "Kubernetes");
+    assert.equal(CATEGORIES[k8s].source, "k8s");
+    assert.equal(CATEGORIES[k8s].names.length, 38);
+});
+
+test("kubernetes labels use kind spellings", () => {
+    assert.equal(titleFor("statefulset"), "StatefulSet");
+    assert.equal(titleFor("configmap"), "ConfigMap");
+    assert.equal(titleFor("persistentvolumeclaim"), "PersistentVolumeClaim");
+    assert.equal(
+        titleFor("horizontalpodautoscaler"),
+        "HorizontalPodAutoscaler"
+    );
+    assert.equal(
+        titleFor("customresourcedefinition"),
+        "CustomResourceDefinition"
+    );
+    assert.equal(titleFor("clusterrolebinding"), "ClusterRoleBinding");
+    assert.equal(titleFor("serviceaccount"), "ServiceAccount");
+    assert.equal(titleFor("api-server"), "API Server");
+    assert.equal(titleFor("etcd-cluster"), "etcd");
+    assert.equal(titleFor("kubelet"), "kubelet");
+    assert.equal(titleFor("kube-proxy"), "kube-proxy");
+    assert.equal(titleFor("worker-node"), "Worker Node");
+    assert.equal(titleFor("pod"), "Pod");
+    assert.equal(titleFor("replicaset"), "ReplicaSet");
+    assert.equal(titleFor("daemonset"), "DaemonSet");
+    assert.equal(titleFor("cronjob"), "CronJob");
+    assert.equal(titleFor("networkpolicy"), "NetworkPolicy");
+    assert.equal(titleFor("persistentvolume"), "PersistentVolume");
+    assert.equal(titleFor("storageclass"), "StorageClass");
+    assert.equal(titleFor("clusterrole"), "ClusterRole");
+    assert.equal(titleFor("rolebinding"), "RoleBinding");
+    assert.equal(titleFor("podsecuritypolicy"), "PodSecurityPolicy");
+    assert.equal(titleFor("resourcequota"), "ResourceQuota");
+    assert.equal(titleFor("limitrange"), "LimitRange");
+    assert.equal(titleFor("controller-manager"), "Controller Manager");
+    assert.equal(
+        titleFor("cloud-controller-manager"),
+        "Cloud Controller Manager"
+    );
+});

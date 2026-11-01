@@ -42,5 +42,5 @@ for (const [source, prefix] of Object.entries(ICONIFY_PREFIXES)) {
 
 if (missingCount) process.exit(1);
 console.log(
-    `✓ All ${curatedCount} curated logos exist in Iconify's ${sets.join(" and ")} sets.`
+    `✓ All ${curatedCount} curated logos exist in Iconify's ${sets.slice(0, -1).join(", ")}${sets.length > 1 ? " and " : ""}${sets.at(-1)} sets.`
 );

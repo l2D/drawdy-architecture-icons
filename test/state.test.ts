@@ -76,6 +76,11 @@ test("readState keeps gcp iconify refs and 1.0.4 refs", () => {
     assert.deepEqual(readState({ recent }).recent, recent);
 });
 
+test("readState keeps k8s iconify refs", () => {
+    const recent = [{ source: "iconify", name: "k8s:pod", title: "Pod" }];
+    assert.deepEqual(readState({ recent }).recent, recent);
+});
+
 test("readState drops an unknown iconify prefix", () => {
     const state = readState({
         recent: [{ source: "iconify", name: "foo:bar", title: "x" }],

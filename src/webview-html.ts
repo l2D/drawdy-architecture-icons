@@ -84,7 +84,7 @@ export const WEBVIEW_HTML = `<!doctype html>
     <div class="pt-3 text-center text-caption text-fg-subtle" id="count" hidden></div>
     <div class="flex justify-center"><button class="${SECONDARY} mt-2" id="more" type="button" hidden>Show more</button></div>
 </main>
-<footer class="flex-none border-t border-divider px-4 py-2 text-caption text-fg-subtle">Lucide, ISC. SVG Logos, CC0. Google Cloud icons, Apache 2.0. Azure icons © Microsoft.</footer>
+<footer class="flex-none border-t border-divider px-4 py-2 text-caption text-fg-subtle">Lucide ISC · SVG Logos CC0 · Google Cloud, Kubernetes Apache 2.0 · Azure © Microsoft</footer>
 <script>
 (function () {
     var api = acquireDrawdyApi();

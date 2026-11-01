@@ -3,7 +3,7 @@ import { AZURE_ICONS } from "./azure-icons.ts";
 export type Category = {
     id: string;
     title: string;
-    source: "lucide" | "logos" | "gcp" | "azure";
+    source: "lucide" | "logos" | "gcp" | "azure" | "k8s";
     names: string[];
 };
 
@@ -250,6 +250,51 @@ export const CATEGORIES: Category[] = [
         title: "Azure",
         source: "azure",
         names: Object.keys(AZURE_ICONS),
+    },
+    {
+        id: "kubernetes",
+        title: "Kubernetes",
+        source: "k8s",
+        names: [
+            "pod",
+            "deployment",
+            "replicaset",
+            "statefulset",
+            "daemonset",
+            "job",
+            "cronjob",
+            "horizontalpodautoscaler",
+            "service",
+            "ingress",
+            "endpoints",
+            "networkpolicy",
+            "configmap",
+            "secret",
+            "volume",
+            "persistentvolume",
+            "persistentvolumeclaim",
+            "storageclass",
+            "serviceaccount",
+            "role",
+            "rolebinding",
+            "clusterrole",
+            "clusterrolebinding",
+            "user",
+            "group",
+            "podsecuritypolicy",
+            "namespace",
+            "resourcequota",
+            "limitrange",
+            "customresourcedefinition",
+            "api-server",
+            "etcd-cluster",
+            "scheduler",
+            "controller-manager",
+            "cloud-controller-manager",
+            "kubelet",
+            "kube-proxy",
+            "worker-node",
+        ],
     },
     {
         id: "databases",
@@ -686,6 +731,27 @@ export function titleFor(name: string): string {
         "speech-to-text": "Speech-to-Text",
         "text-to-speech": "Text-to-Speech",
         "identity-aware-proxy": "Identity-Aware Proxy",
+        statefulset: "StatefulSet",
+        replicaset: "ReplicaSet",
+        daemonset: "DaemonSet",
+        cronjob: "CronJob",
+        horizontalpodautoscaler: "HorizontalPodAutoscaler",
+        networkpolicy: "NetworkPolicy",
+        configmap: "ConfigMap",
+        persistentvolume: "PersistentVolume",
+        persistentvolumeclaim: "PersistentVolumeClaim",
+        storageclass: "StorageClass",
+        serviceaccount: "ServiceAccount",
+        rolebinding: "RoleBinding",
+        clusterrole: "ClusterRole",
+        clusterrolebinding: "ClusterRoleBinding",
+        podsecuritypolicy: "PodSecurityPolicy",
+        resourcequota: "ResourceQuota",
+        limitrange: "LimitRange",
+        customresourcedefinition: "CustomResourceDefinition",
+        "etcd-cluster": "etcd",
+        kubelet: "kubelet",
+        "kube-proxy": "kube-proxy",
     };
     const own = Object.prototype.hasOwnProperty;
     const base = name.endsWith("-icon") ? name.slice(0, -5) : name;

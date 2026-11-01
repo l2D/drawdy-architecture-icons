@@ -7,8 +7,12 @@ export const ICONIFY_HOST = "https://api.iconify.design";
 
 export const LOGOS_PREFIX = "logos";
 export const GCP_PREFIX = "gcp";
+export const K8S_PREFIX = "k8s";
 
-export const ICONIFY_PREFIXES: Readonly<Record<"logos" | "gcp", string>> = {
+export const ICONIFY_PREFIXES: Readonly<
+    Record<"logos" | "gcp" | "k8s", string>
+> = {
     logos: LOGOS_PREFIX,
     gcp: GCP_PREFIX,
+    k8s: K8S_PREFIX,
 };
