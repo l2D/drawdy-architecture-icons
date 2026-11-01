@@ -1,11 +1,11 @@
 import { CATEGORIES } from "../src/catalog.ts";
-import { ICONIFY_HOST, ICONIFY_PREFIXES } from "../src/sources.ts";
+import { ICONIFY_HOST, ICONIFY_SETS } from "../src/sources.ts";
 
 let curatedCount = 0;
 let missingCount = 0;
 const sets = [];
 
-for (const [source, prefix] of Object.entries(ICONIFY_PREFIXES)) {
+for (const prefix of ICONIFY_SETS) {
     const res = await fetch(`${ICONIFY_HOST}/collection?prefix=${prefix}`);
     if (!res.ok) {
         console.error(`Iconify collection ${prefix}: HTTP ${res.status}`);
@@ -18,7 +18,7 @@ for (const [source, prefix] of Object.entries(ICONIFY_PREFIXES)) {
     ]);
     const hidden = new Set(data.hidden ?? []);
     const curated = CATEGORIES.filter(
-        (group) => group.source === source
+        (group) => group.source === prefix
     ).flatMap((group) =>
         group.names.map((name) => ({ name, category: group.title }))
     );

@@ -4,7 +4,6 @@ import { iconifyBatchUrls, iconifySvg } from "./iconify";
 import { PANEL_CSS } from "./panel-css";
 import {
     ICONIFY_HOST,
-    ICONIFY_PREFIXES,
     LOGOS_PREFIX,
     LUCIDE_ICON_BASE,
     LUCIDE_INDEX_URL,
@@ -93,7 +92,6 @@ export const WEBVIEW_HTML = `<!doctype html>
     var LUCIDE_ICON_BASE = "${LUCIDE_ICON_BASE}";
     var ICONIFY_HOST = "${ICONIFY_HOST}";
     var LOGOS_PREFIX = "${LOGOS_PREFIX}";
-    var ICONIFY_PREFIXES = ${JSON.stringify(ICONIFY_PREFIXES)};
     var CATEGORIES = ${JSON.stringify(CATEGORIES)};
     var AZURE_ICONS = ${JSON.stringify(AZURE_ICONS)};
     var iconifyBatchUrls = (${iconifyBatchUrls.toString()});
@@ -566,7 +564,7 @@ export const WEBVIEW_HTML = `<!doctype html>
                 if (group.source === "lucide") return makeEntry("lucide", name, name, "");
                 if (group.source === "azure") return makeEntry("azure", name, name, "", AZURE_ICONS[name].title);
                 if (group.source === "logos") logoNames.add(name);
-                return makeEntry("iconify", ICONIFY_PREFIXES[group.source] + ":" + name, name, "");
+                return makeEntry("iconify", group.source + ":" + name, name, "");
             });
             if (group.source === "lucide") lucide = lucide.concat(entries);
             byCategory[group.id] = entries;
