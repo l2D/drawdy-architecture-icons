@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { AZURE_ICONS } from "../src/azure-icons";
 import { CATEGORIES, titleFor } from "../src/catalog";
 
 const NAME = /^[a-z0-9-]+$/;
@@ -87,4 +88,13 @@ test("gcp labels use Google's product names", () => {
     assert.equal(titleFor("text-to-speech"), "Text-to-Speech");
     assert.equal(titleFor("trace"), "Trace");
     assert.equal(titleFor("identity-aware-proxy"), "Identity-Aware Proxy");
+});
+
+test("azure category follows gcp and lists every generated icon", () => {
+    const gcp = CATEGORIES.findIndex((group) => group.id === "gcp");
+    const azure = CATEGORIES.findIndex((group) => group.id === "azure");
+    assert.notEqual(azure, -1, "no azure category");
+    assert.equal(azure, gcp + 1);
+    assert.equal(CATEGORIES[azure].source, "azure");
+    assert.deepEqual(CATEGORIES[azure].names, Object.keys(AZURE_ICONS));
 });

@@ -15,6 +15,7 @@ import type {
     StrokeWidth,
     WebviewToDriver,
 } from "./shared/messages";
+import { AZURE_ICONS } from "./azure-icons";
 import { labelSpot, nextInsertSpot, type InsertRun } from "./layout";
 import { ICONIFY_PREFIXES } from "./sources";
 import { finalizeIconSvg, isMonochrome, toSvgDataUrl } from "./svg";
@@ -89,6 +90,9 @@ function isIconRef(value: unknown): value is IconRef {
         return false;
     }
     if (ref.source === "lucide") return true;
+    if (ref.source === "azure") {
+        return Object.prototype.hasOwnProperty.call(AZURE_ICONS, ref.name);
+    }
     return ref.source === "iconify" && ICONIFY_NAME.test(ref.name);
 }
 

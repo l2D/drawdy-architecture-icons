@@ -1,3 +1,5 @@
+import { AZURE_ICONS } from "./azure-icons";
+
 export type Category = {
     id: string;
     title: string;
@@ -242,6 +244,12 @@ export const CATEGORIES: Category[] = [
             "apigee-api-platform",
             "cloud-api-gateway",
         ],
+    },
+    {
+        id: "azure",
+        title: "Azure",
+        source: "azure",
+        names: Object.keys(AZURE_ICONS),
     },
     {
         id: "databases",

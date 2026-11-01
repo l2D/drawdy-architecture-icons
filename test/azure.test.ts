@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { AZURE_ICONS } from "../src/azure-icons";
+import { WEBVIEW_HTML } from "../src/webview-html";
 
 const SLUG = /^[a-z0-9-]+$/;
 const VIEW_BOX = /<svg\b[^>]*\sviewBox="([^"]*)"/;
@@ -45,4 +46,10 @@ test("azure data stays small", () => {
         0
     );
     assert.ok(total < 200_000, `${total} characters of SVG`);
+});
+
+test("injecting the azure icons leaves the webview with one script to close", () => {
+    assert.ok(WEBVIEW_HTML.includes("var AZURE_ICONS = {"));
+    assert.equal(WEBVIEW_HTML.match(/<\/script/gi)?.length, 1);
+    assert.ok(!WEBVIEW_HTML.includes("<!--"));
 });

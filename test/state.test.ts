@@ -82,3 +82,18 @@ test("readState drops an unknown iconify prefix", () => {
     });
     assert.deepEqual(state.recent, []);
 });
+
+test("readState keeps a known azure ref beside a lucide one with the same name", () => {
+    const recent = [
+        { source: "azure", name: "monitor", title: "Azure Monitor" },
+        { source: "lucide", name: "monitor", title: "Monitor" },
+    ];
+    assert.deepEqual(readState({ recent }).recent, recent);
+});
+
+test("readState drops an unknown azure slug", () => {
+    const state = readState({
+        recent: [{ source: "azure", name: "not-a-service", title: "x" }],
+    });
+    assert.deepEqual(state.recent, []);
+});
