@@ -11,11 +11,5 @@
         "isolatedModules": true,
         "rewriteRelativeImportExtensions": true
     },
-    "include": [
-        "src",
-        "test",
-        "bundle.ts",
-        "vite.config.ts",
-        "vite-plugin-drawdy.ts"
-    ]
+    "include": ["src", "test", "bundle.ts", "vite.config.ts", "vite-plugin-drawdy.ts"]
 }
