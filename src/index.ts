@@ -16,7 +16,7 @@ import type {
     WebviewToDriver,
 } from "./shared/messages";
 import { labelSpot, nextInsertSpot, type InsertRun } from "./layout";
-import { LOGOS_PREFIX } from "./sources";
+import { ICONIFY_PREFIXES } from "./sources";
 import { finalizeIconSvg, isMonochrome, toSvgDataUrl } from "./svg";
 import { WEBVIEW_HTML } from "./webview-html";
 
@@ -28,7 +28,9 @@ const RECENT_LIMIT = 12;
 const SIZES: readonly IconSize[] = [32, 64, 128, 256];
 const STROKES: readonly StrokeWidth[] = [1.5, 2, 2.75];
 const CUSTOM_COLOR = /^#[0-9a-fA-F]{6}$/;
-const ICONIFY_NAME = new RegExp(`^${LOGOS_PREFIX}:[a-z0-9-]+$`);
+const ICONIFY_NAME = new RegExp(
+    `^(${Object.values(ICONIFY_PREFIXES).join("|")}):[a-z0-9-]+$`
+);
 const DEFAULT_OPTIONS: PlaceOptions = {
     size: 64,
     color: "ink",

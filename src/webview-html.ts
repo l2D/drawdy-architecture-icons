@@ -3,6 +3,7 @@ import { iconifyBatchUrls, iconifySvg } from "./iconify";
 import { PANEL_CSS } from "./panel-css";
 import {
     ICONIFY_HOST,
+    ICONIFY_PREFIXES,
     LOGOS_PREFIX,
     LUCIDE_ICON_BASE,
     LUCIDE_INDEX_URL,
@@ -91,6 +92,7 @@ export const WEBVIEW_HTML = `<!doctype html>
     var LUCIDE_ICON_BASE = "${LUCIDE_ICON_BASE}";
     var ICONIFY_HOST = "${ICONIFY_HOST}";
     var LOGOS_PREFIX = "${LOGOS_PREFIX}";
+    var ICONIFY_PREFIXES = ${JSON.stringify(ICONIFY_PREFIXES)};
     var CATEGORIES = ${JSON.stringify(CATEGORIES)};
     var iconifyBatchUrls = (${iconifyBatchUrls.toString()});
     var iconifySvg = (${iconifySvg.toString()});
@@ -555,8 +557,8 @@ export const WEBVIEW_HTML = `<!doctype html>
         CATEGORIES.forEach(function (group) {
             var entries = group.names.map(function (name) {
                 if (group.source === "lucide") return makeEntry("lucide", name, name, "");
-                logoNames.add(name);
-                return makeEntry("iconify", LOGOS_PREFIX + ":" + name, name, "");
+                if (group.source === LOGOS_PREFIX) logoNames.add(name);
+                return makeEntry("iconify", ICONIFY_PREFIXES[group.source] + ":" + name, name, "");
             });
             if (group.source === "lucide") lucide = lucide.concat(entries);
             byCategory[group.id] = entries;
@@ -721,7 +723,7 @@ export const WEBVIEW_HTML = `<!doctype html>
     }
 
     function retryFailedTiles() {
-        var stem = "iconify:" + LOGOS_PREFIX + ":";
+        var stem = "iconify:";
         Array.from(svgFailed).forEach(function (key) {
             if (key.indexOf(stem) === 0) svgFailed.delete(key);
         });

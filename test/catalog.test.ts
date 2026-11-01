@@ -57,3 +57,33 @@ test("titleFor works the same after a toString round trip", () => {
         }
     }
 });
+
+test("gcp category lists the 60 core services", () => {
+    const index = CATEGORIES.findIndex((group) => group.id === "gcp");
+    assert.notEqual(index, -1, "no gcp category");
+    const gcp = CATEGORIES[index];
+    assert.equal(gcp.source, "gcp");
+    assert.equal(gcp.names.length, 60);
+    assert.equal(CATEGORIES[index - 1].id, "aws");
+});
+
+test("gcp labels use Google's product names", () => {
+    assert.equal(titleFor("bigquery"), "BigQuery");
+    assert.equal(titleFor("pubsub"), "Pub/Sub");
+    assert.equal(titleFor("vertexai"), "Vertex AI");
+    assert.equal(titleFor("cloud-sql"), "Cloud SQL");
+    assert.equal(titleFor("cloud-nat"), "Cloud NAT");
+    assert.equal(titleFor("cloud-vpn"), "Cloud VPN");
+    assert.equal(titleFor("cloud-cdn"), "Cloud CDN");
+    assert.equal(
+        titleFor("google-kubernetes-engine"),
+        "Google Kubernetes Engine"
+    );
+    assert.equal(
+        titleFor("identity-and-access-management"),
+        "Identity and Access Management"
+    );
+    assert.equal(titleFor("speech-to-text"), "Speech-to-Text");
+    assert.equal(titleFor("text-to-speech"), "Text-to-Speech");
+    assert.equal(titleFor("trace"), "Cloud Trace");
+});

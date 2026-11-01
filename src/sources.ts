@@ -6,3 +6,9 @@ export const LUCIDE_ICON_BASE = `https://cdn.jsdelivr.net/npm/lucide-static@${LU
 export const ICONIFY_HOST = "https://api.iconify.design";
 
 export const LOGOS_PREFIX = "logos";
+export const GCP_PREFIX = "gcp";
+
+export const ICONIFY_PREFIXES: Readonly<Record<"logos" | "gcp", string>> = {
+    logos: LOGOS_PREFIX,
+    gcp: GCP_PREFIX,
+};
