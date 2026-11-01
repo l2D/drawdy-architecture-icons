@@ -221,12 +221,6 @@ const ICONS = [
         title: "Azure Key Vault",
     },
     {
-        // The zip has no plain Entra ID icon. This one is the Entra diamond with the fewest extras around it.
-        slug: "entra-privleged-identity-management",
-        file: "identity/02251-icon-service-Entra-Privleged-Identity-Management.svg",
-        title: "Microsoft Entra ID",
-    },
-    {
         slug: "entra-managed-identities",
         file: "identity/10227-icon-service-Entra-Managed-Identities.svg",
         title: "Managed Identities",
@@ -338,6 +332,8 @@ const BOM = /^﻿/;
 const XML_DECLARATION = /<\?xml[\s\S]*?\?>/gi;
 const COMMENT = /<!--[\s\S]*?-->/g;
 const SCRIPT = /<script\b[^>]*\/>|<script\b[\s\S]*?<\/script>/gi;
+// Microsoft's internal names (e.g. "Icon-compute-21"), which would show as hover tooltips when painted inline.
+const TITLE = /<title\b[^>]*\/>|<title\b[\s\S]*?<\/title>/gi;
 const EVENT_HANDLER = /\son[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi;
 const VIEW_BOX = /\sviewBox\s*=\s*(?:"([^"]*)"|'([^']*)')/;
 
@@ -347,6 +343,7 @@ function clean(source) {
         .replace(XML_DECLARATION, "")
         .replace(COMMENT, "")
         .replace(SCRIPT, "")
+        .replace(TITLE, "")
         .replace(EVENT_HANDLER, "")
         .replace(/>\s*[\r\n]+\s*</g, "><")
         .replace(/\s*[\r\n]+\s*/g, " ")

@@ -21,11 +21,6 @@ test("azure titles use current product names", () => {
     assert.equal(AZURE_ICONS["function-apps"].title, "Azure Functions");
     assert.equal(AZURE_ICONS["cognitive-search"].title, "Azure AI Search");
     assert.equal(AZURE_ICONS["azure-cosmos-db"].title, "Azure Cosmos DB");
-    // The zip has no plain Entra ID icon; this is the closest official one.
-    assert.equal(
-        AZURE_ICONS["entra-privleged-identity-management"]?.title,
-        "Microsoft Entra ID"
-    );
 });
 
 test("every azure svg is safe and keeps its viewBox", () => {
@@ -39,6 +34,7 @@ test("every azure svg is safe and keeps its viewBox", () => {
             .map(Number);
         assert.ok(width > 0 && height > 0, `${slug} viewBox is ${viewBox}`);
         assert.ok(!svg.includes("<script"), `${slug} has a <script>`);
+        assert.ok(!svg.includes("<title"), `${slug} has a <title>`);
         assert.doesNotMatch(svg, / on[a-z]+=/, `${slug} has an event handler`);
     }
 });
